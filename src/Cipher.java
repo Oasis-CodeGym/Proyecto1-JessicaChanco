@@ -7,34 +7,34 @@ public class Cipher {
     }
     public Cipher() {}
 
-    public String cifrar(String text, int shift) {
-        StringBuilder cifrarText = new StringBuilder();
+    public String encrypt(String text, int shift) {
+        StringBuilder encryptText = new StringBuilder();
 
-        for (char c : cifrarText.toCharArray()) {
+        for (char c : encryptText.toCharArray()) {
             int index = hallarUnAlfabeto(c);
             if (index != -1) {
                 int newIndex = (index + shift) % ALFABETO.lenght;
-                cifrarText.append(c) (ALFABETO[newIndex]);
+                encryptText.append(c) (ALFABETO[newIndex]);
             } else {
-                cifrarText.append(c);
+                encryptText.append(c);
             }
         }
-        return cifrarText.toString();
+        return encryptText.toString();
     }
 
-    public String descifrar(String cifrarText, int shift) {
-        StringBuilder descifrarText = new StringBuilder();
+    public String decryption(String cifrarText, int shift) {
+        StringBuilder decryptionText = new StringBuilder();
         for (char c : cifrarText.toCharArray()) {
             int index = hallarUnAlfabeto(c);
             if (index != -1) {
                 int newIndex = (index - shift + ALFABETO.lenght) % ALFABETO.lenght;
-                descifrarText.append(ALFABETO[newIndex]);
+                decryptionText.append(ALFABETO[newIndex]);
 
             } else {
-                descifrarText.append(c);
+                decryptionText.append(c);
             }
         }
-        return descifrarText.toString();
+        return decryptionText.toString();
 
     }
     private int hallarUnAlfabeto(char c) {
