@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class FileManager {
 
-    public String readFile(String filePath) {
+    public static String readFile(String filePath) {
         Path path = Paths.get(filePath);
         try {
             return Files.readString(path);
@@ -17,7 +17,7 @@ public class FileManager {
 
         }
     }
-    public void writeFile(String content, String filePath) {
+    public static void writeFile(String content, String filePath) {
         Path path = Paths.get(filePath);
         try {
             Files.writeString(path, content);

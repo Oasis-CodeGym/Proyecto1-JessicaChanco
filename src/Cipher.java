@@ -4,17 +4,17 @@ public class Cipher {
             'r','s','t','u','v','w','x','y','z','A','Á','À','Ä','Â','B','C','Ç','D','E','É','È','Ë','Ê','F','G','H','I','Í','Ì','Ï','Î','J','K','L','M','N','Ñ','O','Ó','Ò','Ö','Ô','P','Q',
             'R','S','T','U','V','W','X','Y','Z',' ','.',',','!','¿',';',':','-','_','+','=','*','/','%','&','@','#','$','^','`','~','|','\n','\t','1','2','3','4','5','6','7','8','9','0'};
 
-    }
-    public Cipher() {}
+
+    //public Cipher() {}
 
     public String encrypt(String text, int shift) {
         StringBuilder encryptText = new StringBuilder();
 
-        for (char c : encryptText.toCharArray()) {
+        for (char c : text.toCharArray()) {
             int index = hallarUnAlfabeto(c);
             if (index != -1) {
-                int newIndex = (index + shift) % ALFABETO.lenght;
-                encryptText.append(c) (ALFABETO[newIndex]);
+                int newIndex = (index + shift) % ALPHABET.length;
+                encryptText.append(ALPHABET[newIndex]);
             } else {
                 encryptText.append(c);
             }
@@ -22,27 +22,30 @@ public class Cipher {
         return encryptText.toString();
     }
 
-    public String decryption(String cifrarText, int shift) {
-        StringBuilder decryptionText = new StringBuilder();
-        for (char c : cifrarText.toCharArray()) {
+    public String decryption(String decryptionText, int shift) {
+        StringBuilder decryptionText1 = new StringBuilder(decryptionText);
+        for (char c : decryptionText1.toString().toCharArray()) {
             int index = hallarUnAlfabeto(c);
             if (index != -1) {
-                int newIndex = (index - shift + ALFABETO.lenght) % ALFABETO.lenght;
-                decryptionText.append(ALFABETO[newIndex]);
+                int newIndex = (index - shift + ALPHABET.length) % ALPHABET.length;
+                decryptionText1.append(ALPHABET[newIndex]);
 
             } else {
-                decryptionText.append(c);
+                decryptionText1.append(c);
             }
         }
-        return decryptionText.toString();
+        return decryptionText1.toString();
 
     }
     private int hallarUnAlfabeto(char c) {
-        for (int i = 0; i < ALFABETO.lenght; i++) {
-            if (ALFABETO[i] == c) {
+        for (int i = 0; i < ALPHABET.length; i++) {
+            if (ALPHABET[i] == c) {
+                return i;
 
             }
 
         }
+        return -1;
+    }
 
 }
