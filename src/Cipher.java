@@ -23,8 +23,8 @@ public class Cipher {
     }
 
     public String decryption(String decryptionText, int shift) {
-        StringBuilder decryptionText1 = new StringBuilder(decryptionText);
-        for (char c : decryptionText1.toString().toCharArray()) {
+        StringBuilder decryptionText1 = new StringBuilder();
+        for (char c : decryptionText.toString().toCharArray()) {
             int index = hallarUnAlfabeto(c);
             if (index != -1) {
                 int newIndex = (index - shift + ALPHABET.length) % ALPHABET.length;
