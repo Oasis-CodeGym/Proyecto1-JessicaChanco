@@ -5,6 +5,13 @@ import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
+
+
+        String content = "fileName=properties.txt\nkey1=value1\nkey2=value2";
+        String propertiesFilePath = "src/properties.txt";
+        FileManager.writeFile(content, propertiesFilePath);
+        System.out.println("Archivo properties.txt creado exitosamente.");
+
         Cipher cipher = new Cipher();
 
         String inputFilePath = "src/input.txt";
@@ -14,6 +21,7 @@ public class MainApp {
         //leemos el archivo input
         //luego se encrypta
         //despues se escribe en output
+
 
         String text = FileManager.readFile(inputFilePath);
 
