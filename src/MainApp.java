@@ -8,14 +8,14 @@ public class MainApp {
 
 
         String content = "fileName=properties.txt\nkey1=value1\nkey2=value2";
-        String propertiesFilePath = "src/properties.txt";
+        String propertiesFilePath = "files/properties.txt";
         FileManager.writeFile(content, propertiesFilePath);
         System.out.println("Archivo properties.txt creado exitosamente.");
 
         Cipher cipher = new Cipher();
 
-        String inputFilePath = "src/input.txt";
-        String outFilePath = "src/output.txt";
+        String inputFilePath = "files/input.txt";
+        String outFilePath = "files/output.txt";
 
         int shift = 3;
         //leemos el archivo input
