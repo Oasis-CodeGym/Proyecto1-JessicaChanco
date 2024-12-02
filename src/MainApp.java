@@ -5,40 +5,57 @@ import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
+        
+        System.out.println("Selecciona una opción:");
+        System.out.println("1. Cifrar texto");
+        System.out.println("2. Descifrar texto");
+        System.out.println("3. Salir");
 
 
-        String content = "fileName=properties.txt\nkey1=value1\nkey2=value2";
+        Scanner scanner = new Scanner(System.in);
+        int opcion = scanner.nextInt();
+
+        String content = "fileName=documento.txt\nkey=3\nciperPath=documentoCifrado.txt";
         String propertiesFilePath = "files/properties.txt";
         FileManager.writeFile(content, propertiesFilePath);
         System.out.println("Archivo properties.txt creado exitosamente.");
 
         Cipher cipher = new Cipher();
-
         String inputFilePath = "files/input.txt";
         String outFilePath = "files/output.txt";
-
         int shift = 3;
-        //leemos el archivo input
-        //luego se encrypta
-        //despues se escribe en output
 
 
-        String text = FileManager.readFile(inputFilePath);
 
-        String cifrarTexto = cipher.encrypt(text, shift);
+        switch(opcion){
+            case 1:
+                String text = FileManager.readFile(inputFilePath);
 
-        FileManager.writeFile(cifrarTexto, outFilePath);
+                String cifrarTexto = cipher.encrypt(text, shift);
 
-        System.out.println("texto cifrado");
-        //leemos el archivo output
-        //luego desencriptamos
-        //despues escribimos en input
-        String text1 = FileManager.readFile(outFilePath);
+                FileManager.writeFile(cifrarTexto, outFilePath);
 
-        String descifrarTexto = cipher.decryption(text1, shift);
-        System.out.println("texto descifrado");
+                System.out.println("texto cifrado");
+                break;
 
-        FileManager.writeFile(descifrarTexto, inputFilePath);
+
+            case 2 :
+                String text1 = FileManager.readFile(outFilePath);
+
+                String descifrarTexto = cipher.decryption(text1, shift);
+                System.out.println("texto descifrado");
+
+                FileManager.writeFile(descifrarTexto, inputFilePath);
+                break;
+
+
+            case 3 :
+                System.out.println("hasta luego amigos");
+                break;
+
+
+
+        }
 
     }
 }
